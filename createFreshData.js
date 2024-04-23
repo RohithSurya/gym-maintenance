@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 // MOCK DATA
 const users = require("./mock_data/users.json");
@@ -71,9 +72,12 @@ const execScript = async () => {
 
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
+    const { password } = user;
     user.gym = __findMatch(gyms, user.gym);
-    const userDoc = new User(user);
     try {
+      const salt = await bcrypt.genSalt(10);
+      const hashed = await bcrypt.hash(password, salt);
+      const userDoc = new User({ ...user, password: hashed });
       const saved = await userDoc.save();
       user.mongo_id = saved._id;
       console.log(saved);

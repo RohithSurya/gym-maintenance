@@ -2,18 +2,21 @@
   {
     "idx": 1,
     "email": "surya@example.com",
+    "password": "password",
     "user_type": "CUSTOMER",
     "gym": 1
   },
   {
     "idx": 2,
     "email": "rathish@example.com",
+    "password": "password",
     "user_type": "CUSTOMER",
     "gym": 2
   },
   {
     "idx": 3,
     "email": "rohith@example.com",
+    "password": "password",
     "user_type": "ADMIN",
     "gym": 1
   }
